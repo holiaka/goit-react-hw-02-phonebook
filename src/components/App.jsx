@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import {ContactForm} from "./ContactForm/ContactForm";
+import { ContactForm } from "./ContactForm/ContactForm";
+import { Filter } from './Filter/Filter';
 
 
 
@@ -12,14 +13,14 @@ export class App extends Component {
 
   visibleContacts = () => {
     const arr = this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()));
-    console.log(arr);
     return arr;
   };  
 
-  handleSubmit = evt => {
+  handleSubmit = (evt, {resetForm}) => {
     let contactsState = this.state.contacts;
     contactsState.push({ id: nanoid(), name: evt.name, number: evt.number });
     this.setState({ contacts: contactsState });
+    resetForm();
   };
 
   findContacts = evt => {
@@ -41,11 +42,11 @@ export class App extends Component {
         }}
       >
         <div>
-          <h2>Phonebook</h2>
+          <h1>Phonebook</h1>
           <ContactForm onSubmit={this.handleSubmit}></ContactForm>                 
           <h2>Contacts</h2>
-          <p>Find contacts by name</p>
-          <input type="text" onChange={this.findContacts} />
+          <p>Find contacts by name</p>          
+          <Filter onChange={this.findContacts}></Filter>
           <ul>
             {this.visibleContacts().map(({ id, name, number }) => (
               <li key={id}>
