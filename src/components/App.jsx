@@ -18,7 +18,15 @@ export class App extends Component {
   };  
 
   handleSubmit = (evt, {resetForm}) => {
-    let contactsState = this.state.contacts;
+    
+    const contactsState = this.state.contacts;
+    const filterName = contactsState.filter(contact => contact.name === evt.name);
+    
+    if (filterName.length > 0) {
+      alert("You have already added this person's data to Contact list!!!");
+      return;
+    }
+
     contactsState.push({ id: nanoid(), name: evt.name, number: evt.number });
     this.setState({ contacts: contactsState });
     resetForm();
