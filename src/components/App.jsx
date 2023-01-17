@@ -66,7 +66,8 @@ export class App extends Component {
           <ContactForm onSubmit={this.handleSubmit}></ContactForm>                 
           <h2 style={{
             margin: 0,
-            fontSize: '28px'
+            fontSize: '28px',
+            textAlign: "center",
           }}>Contacts</h2>                    
           <Filter onChange={this.findContacts}></Filter>
           <ContactList contacts={this.visibleContacts} deleteContact={this.deleteContact}></ContactList>
