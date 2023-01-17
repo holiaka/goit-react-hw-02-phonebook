@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from './Filter/Filter';
+import { ContactList } from './ContactList/ContactList';
 
 
 
@@ -44,16 +45,9 @@ export class App extends Component {
         <div>
           <h1>Phonebook</h1>
           <ContactForm onSubmit={this.handleSubmit}></ContactForm>                 
-          <h2>Contacts</h2>
-          <p>Find contacts by name</p>          
+          <h2>Contacts</h2>                    
           <Filter onChange={this.findContacts}></Filter>
-          <ul>
-            {this.visibleContacts().map(({ id, name, number }) => (
-              <li key={id}>
-                {name}: {number}
-              </li>
-            ))}
-          </ul>
+          <ContactList contacts={this.visibleContacts}></ContactList>
         </div>
       </div>
     );
