@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import { Formik, ErrorMessage} from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { ErrorText, SubmitForm, Input, InputName} from './ContactForms';
+import { ErrorText, SubmitForm, InputBox, Input, InputName, SubmitBtn } from './ContactForms';
 
 const initialValues = {
   name: '',
@@ -29,8 +29,6 @@ const FormError = ({ name }) => {
 };
 
 export const ContactForm = ({ onSubmit }) => {
-  
-  
   return (
     <Formik
       initialValues={initialValues}
@@ -39,12 +37,21 @@ export const ContactForm = ({ onSubmit }) => {
     >
       <SubmitForm>
         <InputName>Name: </InputName>
-        <Input type="text" name="name" required></Input>
-        <FormError name="name" />
+        <InputBox>          
+          <Input type="text" name="name" required></Input>
+          <FormError name="name" />
+        </InputBox>
         <InputName>Number: </InputName>
-        <Input type="tel" name="number" placeholder="Enter phone number" required></Input>
-        <FormError name="number" />
-        <button type="submit">Add contact</button>
+        <InputBox>          
+          <Input
+            type="tel"
+            name="number"
+            placeholder="Enter phone number"
+            required
+          ></Input>
+          <FormError name="number" />
+        </InputBox>
+        <SubmitBtn type="submit">Add contact</SubmitBtn>
       </SubmitForm>
     </Formik>
   );

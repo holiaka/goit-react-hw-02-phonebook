@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from "./ContactForm/ContactForm";
-import { Filter } from './Filter/Filter';
+import { Filter } from './Filter/Filter.jsx';
 import { ContactList } from './ContactList/ContactList';
 
 
@@ -58,9 +58,16 @@ export class App extends Component {
         }}
       >
         <div>
-          <h1>Phonebook</h1>
+          <h1 style={{
+            margin: 0,
+            fontSize: "36px",
+            textAlign: 'center',
+          }}>Phonebook</h1>
           <ContactForm onSubmit={this.handleSubmit}></ContactForm>                 
-          <h2>Contacts</h2>                    
+          <h2 style={{
+            margin: 0,
+            fontSize: '28px'
+          }}>Contacts</h2>                    
           <Filter onChange={this.findContacts}></Filter>
           <ContactList contacts={this.visibleContacts} deleteContact={this.deleteContact}></ContactList>
         </div>
