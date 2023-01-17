@@ -29,10 +29,16 @@ const FormError = ({ name }) => {
 };
 
 export const ContactForm = ({ onSubmit }) => {
+  
+  const onSubmitInner = (value, {resetForm}) => { 
+    onSubmit(value);
+    resetForm();
+  };
+  
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={onSubmit}
+      onSubmit={onSubmitInner}
       validationSchema={validationSchema}
     >
       <SubmitForm>

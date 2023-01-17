@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { ContactForm } from "./ContactForm/ContactForm";
 import { Filter } from './Filter/Filter.jsx';
-import { ContactList } from './ContactList/ContactList';
+import { ContactList } from './ContactList/ContactList.jsx';
 
 
 
@@ -17,8 +17,7 @@ export class App extends Component {
     return arr;
   };  
 
-  handleSubmit = (evt, {resetForm}) => {
-    
+  handleSubmit = (evt) => {    
     const contactsState = this.state.contacts;
     const filterName = contactsState.filter(contact => contact.name === evt.name);
     
@@ -29,7 +28,6 @@ export class App extends Component {
 
     contactsState.push({ id: nanoid(), name: evt.name, number: evt.number });
     this.setState({ contacts: contactsState });
-    resetForm();
   };
 
   findContacts = evt => {
@@ -38,7 +36,6 @@ export class App extends Component {
   };
 
   deleteContact = evt => {
-    console.log(evt)
     const contactsState = this.state.contacts;
     const newContacts = contactsState.filter(item => item.id !== evt.target.id);
     this.setState ({contacts: newContacts})

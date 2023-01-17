@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
-import { ContactListItem } from "components/ContactListItem/ContactListItem";
+import { ContactListItem } from "components/ContactListItem/ContactListItem.jsx";
+import { Wrapper } from './ContactList';
+
 export const ContactList = ({ contacts, deleteContact }) => {
-    return (<ul>
-        {contacts().map(({ id, name, number}) => (
-            
-            <ContactListItem key={id} id={id} name={name} number={number} deleteContact={deleteContact}></ContactListItem>
-           
+    return (<Wrapper>
+        {contacts().map(({ id, name, number}) => (            
+            <ContactListItem key={id} id={id} name={name} number={number} deleteContact={deleteContact}></ContactListItem>           
         ))}
-    </ul>);
+    </Wrapper>);
 }
 
 ContactList.propTypes = {
