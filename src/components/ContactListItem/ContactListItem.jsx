@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { DeleteButton, Item } from './ContactListItem';
 
-export const ContactListItem = ({ id, name, number, deleteContact }) => {
-  return (
+export const ContactListItem = ({ id, name, number, deleteContact }) => {  
+  return (    
     <Item>
       <p>
         {name}: <span>{number}</span>

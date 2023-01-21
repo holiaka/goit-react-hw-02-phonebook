@@ -13,21 +13,19 @@ export class App extends Component {
   };
 
   visibleContacts = () => {
-    const arr = this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()));
-    return arr;
-  };  
+    return this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()));
+    };  
 
   handleSubmit = (evt) => {    
-    const contactsState = this.state.contacts;
-    const filterName = contactsState.filter(contact => contact.name === evt.name);
+    const {contacts} = this.state;
+    const filterName = contacts.find(contact => contact.name === evt.name);
     
-    if (filterName.length > 0) {
+    if (filterName) {
       alert("You have already added this person's data to Contact list!!!");
       return;
     }
 
-    contactsState.push({ id: nanoid(), name: evt.name, number: evt.number });
-    this.setState({ contacts: contactsState });
+    this.setState({ contacts: [...contacts, { id: nanoid(), name: evt.name, number: evt.number }] });
   };
 
   findContacts = evt => {
@@ -36,9 +34,8 @@ export class App extends Component {
   };
 
   deleteContact = evt => {
-    const contactsState = this.state.contacts;
-    const newContacts = contactsState.filter(item => item.id !== evt.target.id);
-    this.setState ({contacts: newContacts})
+    const {contacts} = this.state;
+    this.setState ({contacts: contacts.filter(item => item.id !== evt.target.id)})
   }
 
   render() {

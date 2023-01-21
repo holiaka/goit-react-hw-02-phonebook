@@ -4,7 +4,7 @@ import { Wrapper } from './ContactList';
 
 export const ContactList = ({ contacts, deleteContact }) => {
     return (<Wrapper>
-        {contacts().map(({ id, name, number}) => (            
+        {contacts().map(({ id, name, number }) => (            
             <ContactListItem key={id} id={id} name={name} number={number} deleteContact={deleteContact}></ContactListItem>           
         ))}
     </Wrapper>);
